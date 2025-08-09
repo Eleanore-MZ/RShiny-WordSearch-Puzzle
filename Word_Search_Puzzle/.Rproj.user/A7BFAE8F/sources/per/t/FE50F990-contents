@@ -1,0 +1,102 @@
+---
+title: "The Best Project Ever"
+subtitle: "STATS 20 Wordsearch Puzzle"
+author: "Group 9"
+date: "2025-07-30"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Group Members
+
+Eleanore Zhu (306467383), Daniel Song (206166917), Yinbo Zhang (006441549), Gabriella Aufdermaur (006394492), Yubei Li (206663488)
+
+## R Shiny Publication
+
+https://eleanorez1922.shinyapps.io/R_Word_Search_Puzzle/
+
+## Project Idea
+
+<!-- Describe your project here -->
+
+In this project, we developed an interactive word search game using R Shiny that focuses on core vocabulary from introductory statistics. The goal of the game is to help users engage with statistical terminology in a fun and educational way. Players are presented with a 20x20 grid filled with randomly placed letters, in which 10 statistical terms are hidden either horizontally or vertically. By entering the correct word, starting position, and direction, users can identify the words within the grid. The game provides real-time feedback, optional hints, and a scoring system that rewards correct answers while deducting points for hints. Through this project, we explored the use of reactive programming in Shiny, practiced UI design, and strengthened our understanding of data structures and user interaction in R. 
+
+
+## How the Project Works
+
+When the user launches the app, a 20x20 grid of letters is automatically generated. Hidden within this grid are 10 randomly selected statistical vocabulary words, placed either horizontally or vertically. Each letter of the hidden words is integrated into the grid alongside random filler letters, making the search more challenging.
+
+## Gameplay Flow
+
+#### Guessing a Word  
+
+The user inputs a guess into three fields:
+
+1. The word(e.g., “MEDIAN”)
+2. The starting letter’s row and column
+3. The direction (“horizontal” or “vertical”)
+
+#### Feedback and Highlighting:
+
+Upon clicking the “Submit Word” button, the app verifies whether the guessed word exists in the correct position and orientation. 
+
+1. If the guess is correct, the corresponding word is highlighted in yellow in the grid, and a blue message box appears in the lower right corner saying “Correct!”.
+2. If the guess is incorrect, a red message box shows “Incorrect guess!”.
+3. If the word has already been found, a yellow message box notifies the user “Already found!” to avoid duplicate submissions.
+
+#### Hint Functionality:
+
+If the user is stuck, clicking the “Hint” button reveals the starting position and direction of one of the remaining hidden words. However, using a hint results in a 5-point penalty.
+
+#### Scoring System:
+
+The app calculates the score in real time. 
+
+1. +10 points for each correct word
+2. -2 points for each hint used (via the “Get Hint” button), can’t go below 0
+3. The score accumulates throughout the game based on the player’s actions
+
+The live feedback system helps players track their progress as they play.
+
+#### Found Words:
+
+Correctly submitted words are displayed in the “Found Words” section. This helps player keep track of their progress throughout the game. The list automatically updates and avoids duplicates if the same word is guessed multiple times.
+
+#### Resetting the Game:
+
+Clicking the “New Game” button resets the entire game environment
+
+1. A new grid is generated with a fresh set of hidden words
+2. The “Found Words” list is cleared 
+3. The score resets to zero
+4. Any feedback messages or hints are also cleared
+
+This allows players to start over and try a different combination of hidden words.
+
+```{r}
+knitr::include_graphics("image.jpeg")
+```
+
+
+## Code Structures & Features
+
+**App features general overview**: Hints, scoring systems (including subtraction based on number of hints used), ability to start a new game, random grid regeneration with each new game, and messaging systems for words guessed (“Correct,” “Incorrect,” “Invalid”, “Already found”) based on validation logic.
+
+**Word bank (vocab)**: a list of statistics and STATS 20 related words to be found in the wordsearch.
+
+**Random grid generation (generate_grid)**: function of random placement of 20 randomly selected words from the word bank vocabularies.
+
+**R Shiny UI (ui)**: UI design of the playboard window of wordsearch, includes a sidebar of multiple functions (new game, hints, score, answer submission) and the wordsearch grid.
+
+**App Server (server)**: implementation of all functions of the game into the Shiny app’s visual display window (e.g. grid generation function), and interacts with user behaviors based on our proposal’s idea.
+
+
+## AI Usage Statement
+
+<!-- Change this as appropriate. I will not accept submissions without an AI usage statement. -->
+
+We used generative AI tools (including but not limited to ChatGPT, Copilot, Gemini, Grok, and Claude) in this project to gain a better understanding of R Shiny and for some basic guidance on UI/servers to implement and format the code. Otherwise, the presented here is the original product of our group members, developed through our own reasoning, collaboration, and programming efforts.
+
